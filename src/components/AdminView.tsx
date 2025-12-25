@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
 	MessageSquare,
 	TrendingUp,
@@ -11,6 +11,7 @@ import {
 	AlertCircle,
 	Zap,
 } from 'lucide-react';
+import { AnalysisReportResponse, baseService } from '../services/base';
 
 interface ChatSession {
 	id: string;
@@ -23,6 +24,15 @@ interface ChatSession {
 export default function AdminView() {
 	const [selectedChat, setSelectedChat] = useState<string | null>(null);
 	const [activeTab, setActiveTab] = useState<'chats' | 'analytics' | 'settings'>('chats');
+
+	const [analysis, setAnalysis] = useState<AnalysisReportResponse>();
+
+	useEffect(() => {
+		baseService
+			.getAnalysisReport()
+			.then(setAnalysis)
+			.catch((error: unknown) => console.error('Ошибка при загрузке отчета:', error));
+	}, []);
 
 	const chatSessions: ChatSession[] = [
 		{
@@ -502,25 +512,37 @@ export default function AdminView() {
 								</div>
 							</div>
 
-							<div className="bg-amber-50 rounded-xl p-6 border border-amber-200 flex items-start gap-4">
-								<AlertCircle className="w-6 h-6 text-amber-600 flex-shrink-0 mt-1" />
-								<div>
-									<h4 className="font-semibold text-slate-800 mb-2">
-										Рекомендации по товарам
-									</h4>
-									<ul className="text-sm text-slate-700 space-y-1">
-										<li>• Увеличить запас изделий с опалом и морганитом</li>
-										<li>
-											• Разработать новую коллекцию серег-люстр в соответствии с трендом
-										</li>
-										<li>
-											• Рассмотреть снижение цен на товары с низким спросом или проведение
-											промоакций
-										</li>
-										<li>• Активировать маркетинговые кампании для растущих категорий</li>
-									</ul>
+							{analysis?.insights?.length && (
+								<div className="bg-amber-50 rounded-xl p-6 border border-amber-200 flex items-start gap-4">
+									<AlertCircle className="w-6 h-6 text-amber-600 flex-shrink-0 mt-1" />
+									<div>
+										<h4 className="font-semibold text-slate-800 mb-2">
+											Обратить внимание на
+										</h4>
+										<ul className="text-sm text-slate-700 space-y-1">
+											{analysis?.insights?.map((el, i) => (
+												<li key={i}>{el}</li>
+											))}
+										</ul>
+									</div>
 								</div>
-							</div>
+							)}
+
+							{analysis?.popular_styles?.length && (
+								<div className="bg-amber-50 rounded-xl p-6 border border-amber-200 flex items-start gap-4">
+									<AlertCircle className="w-6 h-6 text-amber-600 flex-shrink-0 mt-1" />
+									<div>
+										<h4 className="font-semibold text-slate-800 mb-2">
+											Рекомендации по стилям
+										</h4>
+										<ul className="text-sm text-slate-700 space-y-1">
+											{analysis?.popular_styles?.map((el, i) => (
+												<li key={i}>{el}</li>
+											))}
+										</ul>
+									</div>
+								</div>
+							)}
 						</div>
 					)}
 
