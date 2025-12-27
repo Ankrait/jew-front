@@ -61,9 +61,9 @@ export default function AdminView() {
 	return (
 		<div className="max-w-7xl mx-auto px-4 py-8">
 			<div className="grid grid-cols-1 lg:grid-cols-4 gap-6 mb-8">
-				<div className="bg-white rounded-xl p-6 shadow-md border border-slate-200">
+				<div className="bg-purple-100 rounded-xl p-6 shadow-md border border-slate-200">
 					<div className="flex items-center justify-between mb-2">
-						<MessageSquare className="w-8 h-8 text-amber-600" />
+						<MessageSquare className="w-8 h-8 text-purple-600" />
 						<span className="text-xs font-medium text-green-600 bg-green-50 px-2 py-1 rounded-full">
 							+12%
 						</span>
@@ -72,7 +72,7 @@ export default function AdminView() {
 					<p className="text-sm text-slate-600">Активные диалоги</p>
 				</div>
 
-				<div className="bg-white rounded-xl p-6 shadow-md border border-slate-200">
+				<div className="bg-purple-100 rounded-xl p-6 shadow-md border border-slate-200">
 					<div className="flex items-center justify-between mb-2">
 						<Users className="w-8 h-8 text-blue-600" />
 						<span className="text-xs font-medium text-green-600 bg-green-50 px-2 py-1 rounded-full">
@@ -83,7 +83,7 @@ export default function AdminView() {
 					<p className="text-sm text-slate-600">Всего клиентов</p>
 				</div>
 
-				<div className="bg-white rounded-xl p-6 shadow-md border border-slate-200">
+				<div className="bg-purple-100 rounded-xl p-6 shadow-md border border-slate-200">
 					<div className="flex items-center justify-between mb-2">
 						<TrendingUp className="w-8 h-8 text-emerald-600" />
 						<span className="text-xs font-medium text-green-600 bg-green-50 px-2 py-1 rounded-full">
@@ -94,7 +94,7 @@ export default function AdminView() {
 					<p className="text-sm text-slate-600">Конверсия в продажу</p>
 				</div>
 
-				<div className="bg-white rounded-xl p-6 shadow-md border border-slate-200">
+				<div className="bg-purple-100 rounded-xl p-6 shadow-md border border-slate-200">
 					<div className="flex items-center justify-between mb-2">
 						<Bot className="w-8 h-8 text-purple-600" />
 						<span className="text-xs font-medium text-blue-600 bg-blue-50 px-2 py-1 rounded-full">
@@ -106,36 +106,33 @@ export default function AdminView() {
 				</div>
 			</div>
 
-			<div className="bg-white rounded-xl shadow-md border border-slate-200 overflow-hidden">
+			<div className="bg-purple-100 rounded-xl shadow-md border border-slate-200 overflow-hidden">
 				<div className="border-b border-slate-200">
 					<div className="flex">
 						<button
 							onClick={() => setActiveTab('chats')}
-							className={`flex-1 px-6 py-4 font-medium transition-colors ${
-								activeTab === 'chats'
-									? 'text-amber-600 border-b-2 border-amber-600 bg-amber-50'
-									: 'text-slate-600 hover:bg-slate-50'
-							}`}>
+							className={`flex-1 px-6 py-4 font-medium transition-colors ${activeTab === 'chats'
+								? 'text-purple-600 border-b-2 border-purple-600 bg-purple-100'
+								: 'text-slate-600 hover:bg-slate-50'
+								}`}>
 							<MessageSquare className="w-5 h-5 inline mr-2" />
 							Диалоги
 						</button>
 						<button
 							onClick={() => setActiveTab('analytics')}
-							className={`flex-1 px-6 py-4 font-medium transition-colors ${
-								activeTab === 'analytics'
-									? 'text-amber-600 border-b-2 border-amber-600 bg-amber-50'
-									: 'text-slate-600 hover:bg-slate-50'
-							}`}>
+							className={`flex-1 px-6 py-4 font-medium transition-colors ${activeTab === 'analytics'
+								? 'text-purple-600 border-b-2 border-purple-600 bg-purple-100'
+								: 'text-slate-600 hover:bg-slate-50'
+								}`}>
 							<TrendingUp className="w-5 h-5 inline mr-2" />
 							Аналитика
 						</button>
 						<button
 							onClick={() => setActiveTab('settings')}
-							className={`flex-1 px-6 py-4 font-medium transition-colors ${
-								activeTab === 'settings'
-									? 'text-amber-600 border-b-2 border-amber-600 bg-amber-50'
-									: 'text-slate-600 hover:bg-slate-50'
-							}`}>
+							className={`flex-1 px-6 py-4 font-medium transition-colors ${activeTab === 'settings'
+								? 'text-purple-600 border-b-2 border-purple-600 bg-purple-100'
+								: 'text-slate-600 hover:bg-slate-50'
+								}`}>
 							<Settings className="w-5 h-5 inline mr-2" />
 							Настройки
 						</button>
@@ -153,26 +150,24 @@ export default function AdminView() {
 									<div
 										key={chat.id}
 										onClick={() => setSelectedChat(chat.id)}
-										className={`p-4 rounded-lg border-2 cursor-pointer transition-all ${
-											selectedChat === chat.id
-												? 'border-amber-600 bg-amber-50'
-												: 'border-slate-200 hover:border-slate-300 bg-white'
-										}`}>
+										className={`p-4 rounded-lg border-2 cursor-pointer transition-all ${selectedChat === chat.id
+											? 'border-purple-600 bg-purple-100'
+											: 'border-slate-200 hover:border-slate-300 bg-purple-100'
+											}`}>
 										<div className="flex justify-between items-start mb-2">
 											<h4 className="font-semibold text-slate-800">{chat.clientName}</h4>
 											<span
-												className={`text-xs px-2 py-1 rounded-full ${
-													chat.status === 'active'
-														? 'bg-green-100 text-green-700'
-														: chat.status === 'waiting'
-														? 'bg-amber-100 text-amber-700'
+												className={`text-xs px-2 py-1 rounded-full ${chat.status === 'active'
+													? 'bg-green-100 text-green-700'
+													: chat.status === 'waiting'
+														? 'bg-purple-100 text-purple-700'
 														: 'bg-slate-100 text-slate-600'
-												}`}>
+													}`}>
 												{chat.status === 'active'
 													? 'Активен'
 													: chat.status === 'waiting'
-													? 'Ожидает'
-													: 'Закрыт'}
+														? 'Ожидает'
+														: 'Закрыт'}
 											</span>
 										</div>
 										<p className="text-sm text-slate-600 mb-2">{chat.lastMessage}</p>
@@ -191,14 +186,14 @@ export default function AdminView() {
 												</h3>
 												<p className="text-sm text-slate-600">Онлайн</p>
 											</div>
-											<button className="px-4 py-2 bg-amber-600 text-white rounded-lg hover:bg-amber-700 transition-colors text-sm font-medium">
+											<button className="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors text-sm font-medium">
 												Взять диалог
 											</button>
 										</div>
 
 										<div className="flex-1 space-y-4 overflow-y-auto mb-4">
 											<div className="flex justify-start">
-												<div className="bg-white rounded-2xl px-4 py-3 max-w-[75%] shadow-sm">
+												<div className="bg-purple-100 rounded-2xl px-4 py-3 max-w-[75%] shadow-sm">
 													<p className="text-sm text-slate-800">
 														Здравствуйте! Интересуют обручальные кольца из белого золота.
 													</p>
@@ -207,17 +202,17 @@ export default function AdminView() {
 											</div>
 
 											<div className="flex justify-end">
-												<div className="bg-amber-600 text-white rounded-2xl px-4 py-3 max-w-[75%] shadow-sm">
+												<div className="bg-purple-600 text-white rounded-2xl px-4 py-3 max-w-[75%] shadow-sm">
 													<p className="text-sm">
 														Добрый день! У нас отличная коллекция. Какой бюджет вы
 														рассматриваете?
 													</p>
-													<span className="text-xs text-amber-100 mt-1 block">14:21</span>
+													<span className="text-xs text-purple-100 mt-1 block">14:21</span>
 												</div>
 											</div>
 
 											<div className="flex justify-start">
-												<div className="bg-white rounded-2xl px-4 py-3 max-w-[75%] shadow-sm">
+												<div className="bg-purple-100 rounded-2xl px-4 py-3 max-w-[75%] shadow-sm">
 													<p className="text-sm text-slate-800">
 														До 80 000 рублей на пару
 													</p>
@@ -230,9 +225,9 @@ export default function AdminView() {
 											<input
 												type="text"
 												placeholder="Введите сообщение..."
-												className="flex-1 px-4 py-3 bg-white border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-500 text-sm"
+												className="flex-1 px-4 py-3 bg-purple-100 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 text-sm"
 											/>
-											<button className="bg-amber-600 text-white p-3 rounded-xl hover:bg-amber-700 transition-colors">
+											<button className="bg-purple-600 text-white p-3 rounded-xl hover:bg-purple-700 transition-colors">
 												<Send className="w-5 h-5" />
 											</button>
 										</div>
@@ -298,7 +293,7 @@ export default function AdminView() {
 										<div className="flex items-center gap-3">
 											<div className="w-48 bg-slate-200 rounded-full h-2">
 												<div
-													className="bg-amber-600 h-2 rounded-full"
+													className="bg-purple-600 h-2 rounded-full"
 													style={{ width: '85%' }}></div>
 											</div>
 											<span className="text-sm font-medium text-slate-600 w-12">342</span>
@@ -309,7 +304,7 @@ export default function AdminView() {
 										<div className="flex items-center gap-3">
 											<div className="w-48 bg-slate-200 rounded-full h-2">
 												<div
-													className="bg-amber-600 h-2 rounded-full"
+													className="bg-purple-600 h-2 rounded-full"
 													style={{ width: '72%' }}></div>
 											</div>
 											<span className="text-sm font-medium text-slate-600 w-12">289</span>
@@ -320,7 +315,7 @@ export default function AdminView() {
 										<div className="flex items-center gap-3">
 											<div className="w-48 bg-slate-200 rounded-full h-2">
 												<div
-													className="bg-amber-600 h-2 rounded-full"
+													className="bg-purple-600 h-2 rounded-full"
 													style={{ width: '58%' }}></div>
 											</div>
 											<span className="text-sm font-medium text-slate-600 w-12">234</span>
@@ -331,7 +326,7 @@ export default function AdminView() {
 										<div className="flex items-center gap-3">
 											<div className="w-48 bg-slate-200 rounded-full h-2">
 												<div
-													className="bg-amber-600 h-2 rounded-full"
+													className="bg-purple-600 h-2 rounded-full"
 													style={{ width: '45%' }}></div>
 											</div>
 											<span className="text-sm font-medium text-slate-600 w-12">181</span>
@@ -349,7 +344,7 @@ export default function AdminView() {
 										</h4>
 									</div>
 									<div className="space-y-3">
-										<div className="bg-white rounded-lg p-4 border border-red-100 hover:border-red-300 transition-colors">
+										<div className="bg-purple-100 rounded-lg p-4 border border-red-100 hover:border-red-300 transition-colors">
 											<div className="flex items-start justify-between mb-2">
 												<h5 className="font-medium text-slate-800">
 													Браслеты из серебра
@@ -366,7 +361,7 @@ export default function AdminView() {
 											</div>
 										</div>
 
-										<div className="bg-white rounded-lg p-4 border border-red-100 hover:border-red-300 transition-colors">
+										<div className="bg-purple-100 rounded-lg p-4 border border-red-100 hover:border-red-300 transition-colors">
 											<div className="flex items-start justify-between mb-2">
 												<h5 className="font-medium text-slate-800">
 													Украшения в стиле минимализм
@@ -383,7 +378,7 @@ export default function AdminView() {
 											</div>
 										</div>
 
-										<div className="bg-white rounded-lg p-4 border border-red-100 hover:border-red-300 transition-colors">
+										<div className="bg-purple-100 rounded-lg p-4 border border-red-100 hover:border-red-300 transition-colors">
 											<div className="flex items-start justify-between mb-2">
 												<h5 className="font-medium text-slate-800">
 													Перстни с гравировкой
@@ -400,7 +395,7 @@ export default function AdminView() {
 											</div>
 										</div>
 
-										<div className="bg-white rounded-lg p-4 border border-red-100 hover:border-red-300 transition-colors">
+										<div className="bg-purple-100 rounded-lg p-4 border border-red-100 hover:border-red-300 transition-colors">
 											<div className="flex items-start justify-between mb-2">
 												<h5 className="font-medium text-slate-800">Броши винтажные</h5>
 												<span className="text-xs font-bold bg-red-100 text-red-700 px-2 py-1 rounded-full">
@@ -425,7 +420,7 @@ export default function AdminView() {
 										</h4>
 									</div>
 									<div className="space-y-3">
-										<div className="bg-white rounded-lg p-4 border border-green-100 hover:border-green-300 transition-colors">
+										<div className="bg-purple-100 rounded-lg p-4 border border-green-100 hover:border-green-300 transition-colors">
 											<div className="flex items-start justify-between mb-2">
 												<h5 className="font-medium text-slate-800">Кольца с опалом</h5>
 												<span className="text-xs font-bold bg-green-100 text-green-700 px-2 py-1 rounded-full">
@@ -445,7 +440,7 @@ export default function AdminView() {
 											</span>
 										</div>
 
-										<div className="bg-white rounded-lg p-4 border border-green-100 hover:border-green-300 transition-colors">
+										<div className="bg-purple-100 rounded-lg p-4 border border-green-100 hover:border-green-300 transition-colors">
 											<div className="flex items-start justify-between mb-2">
 												<h5 className="font-medium text-slate-800">
 													Украшения из золота 585 пробы
@@ -467,7 +462,7 @@ export default function AdminView() {
 											</span>
 										</div>
 
-										<div className="bg-white rounded-lg p-4 border border-green-100 hover:border-green-300 transition-colors">
+										<div className="bg-purple-100 rounded-lg p-4 border border-green-100 hover:border-green-300 transition-colors">
 											<div className="flex items-start justify-between mb-2">
 												<h5 className="font-medium text-slate-800">Серьги-люстры</h5>
 												<span className="text-xs font-bold bg-green-100 text-green-700 px-2 py-1 rounded-full">
@@ -487,7 +482,7 @@ export default function AdminView() {
 											</span>
 										</div>
 
-										<div className="bg-white rounded-lg p-4 border border-green-100 hover:border-green-300 transition-colors">
+										<div className="bg-purple-100 rounded-lg p-4 border border-green-100 hover:border-green-300 transition-colors">
 											<div className="flex items-start justify-between mb-2">
 												<h5 className="font-medium text-slate-800">
 													Кольца с морганитом
@@ -513,8 +508,8 @@ export default function AdminView() {
 							</div>
 
 							{analysis?.insights?.length && (
-								<div className="bg-amber-50 rounded-xl p-6 border border-amber-200 flex items-start gap-4">
-									<AlertCircle className="w-6 h-6 text-amber-600 flex-shrink-0 mt-1" />
+								<div className="bg-purple-100 rounded-xl p-6 border border-purple-200 flex items-start gap-4">
+									<AlertCircle className="w-6 h-6 text-purple-600 flex-shrink-0 mt-1" />
 									<div>
 										<h4 className="font-semibold text-slate-800 mb-2">
 											Обратить внимание на
@@ -529,8 +524,8 @@ export default function AdminView() {
 							)}
 
 							{analysis?.popular_styles?.length && (
-								<div className="bg-amber-50 rounded-xl p-6 border border-amber-200 flex items-start gap-4">
-									<AlertCircle className="w-6 h-6 text-amber-600 flex-shrink-0 mt-1" />
+								<div className="bg-purple-100 rounded-xl p-6 border border-purple-200 flex items-start gap-4">
+									<AlertCircle className="w-6 h-6 text-purple-600 flex-shrink-0 mt-1" />
 									<div>
 										<h4 className="font-semibold text-slate-800 mb-2">
 											Рекомендации по стилям
@@ -555,7 +550,7 @@ export default function AdminView() {
 							<div className="bg-slate-50 rounded-xl p-6 border border-slate-200">
 								<h4 className="font-semibold text-slate-800 mb-4">Интеграции</h4>
 								<div className="space-y-4">
-									<div className="flex items-center justify-between p-4 bg-white rounded-lg border border-slate-200">
+									<div className="flex items-center justify-between p-4 bg-purple-100 rounded-lg border border-slate-200">
 										<div className="flex items-center gap-4">
 											<div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
 												<Globe className="w-6 h-6 text-blue-600" />
@@ -574,7 +569,7 @@ export default function AdminView() {
 										</button>
 									</div>
 
-									<div className="flex items-center justify-between p-4 bg-white rounded-lg border border-slate-200">
+									<div className="flex items-center justify-between p-4 bg-purple-100 rounded-lg border border-slate-200">
 										<div className="flex items-center gap-4">
 											<div className="w-12 h-12 bg-cyan-100 rounded-lg flex items-center justify-center">
 												<MessageSquare className="w-6 h-6 text-cyan-600" />
@@ -589,7 +584,7 @@ export default function AdminView() {
 										</button>
 									</div>
 
-									<div className="flex items-center justify-between p-4 bg-white rounded-lg border border-slate-200">
+									<div className="flex items-center justify-between p-4 bg-purple-100 rounded-lg border border-slate-200">
 										<div className="flex items-center gap-4">
 											<div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
 												<Bot className="w-6 h-6 text-purple-600" />
@@ -613,7 +608,7 @@ export default function AdminView() {
 										<label className="block text-sm font-medium text-slate-700 mb-2">
 											Тон общения
 										</label>
-										<select className="w-full px-4 py-3 bg-white border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500">
+										<select className="w-full px-4 py-3 bg-purple-100 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500">
 											<option>Дружелюбный и профессиональный</option>
 											<option>Формальный</option>
 											<option>Неформальный</option>
@@ -624,14 +619,14 @@ export default function AdminView() {
 										<label className="block text-sm font-medium text-slate-700 mb-2">
 											Язык по умолчанию
 										</label>
-										<select className="w-full px-4 py-3 bg-white border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500">
+										<select className="w-full px-4 py-3 bg-purple-100 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500">
 											<option>Русский</option>
 											<option>English</option>
 											<option>Определять автоматически</option>
 										</select>
 									</div>
 
-									<div className="flex items-center justify-between p-4 bg-white rounded-lg border border-slate-200">
+									<div className="flex items-center justify-between p-4 bg-purple-100 rounded-lg border border-slate-200">
 										<div>
 											<h5 className="font-medium text-slate-800">
 												Автоматические ответы
@@ -642,7 +637,7 @@ export default function AdminView() {
 										</div>
 										<label className="relative inline-flex items-center cursor-pointer">
 											<input type="checkbox" className="sr-only peer" defaultChecked />
-											<div className="w-11 h-6 bg-slate-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-amber-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-amber-600"></div>
+											<div className="w-11 h-6 bg-slate-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-purple-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-purple-100 after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-purple-600"></div>
 										</label>
 									</div>
 								</div>

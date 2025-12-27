@@ -74,20 +74,17 @@ export default function ChatBot() {
 				{messages.map((message) => (
 					<div
 						key={message.id}
-						className={`flex ${
-							message.sender === 'user' ? 'justify-end' : 'justify-start'
-						}`}>
-						<div
-							className={`max-w-[75%] rounded-2xl px-4 py-3 ${
-								message.sender === 'user'
-									? 'bg-amber-600 text-white'
-									: 'bg-slate-100 text-slate-800'
+						className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'
 							}`}>
+						<div
+							className={`max-w-[75%] rounded-2xl px-4 py-3 ${message.sender === 'user'
+								? 'bg-purple-600 text-white'
+								: 'bg-slate-100 text-slate-800'
+								}`}>
 							<p className="text-sm leading-relaxed">{message.text}</p>
 							<span
-								className={`text-xs mt-1 block ${
-									message.sender === 'user' ? 'text-amber-100' : 'text-slate-500'
-								}`}>
+								className={`text-xs mt-1 block ${message.sender === 'user' ? 'text-purple-100' : 'text-slate-500'
+									}`}>
 								{message.timestamp.toLocaleTimeString('ru-RU', {
 									hour: '2-digit',
 									minute: '2-digit',
@@ -107,11 +104,11 @@ export default function ChatBot() {
 						onChange={(e) => setInput(e.target.value)}
 						onKeyPress={(e) => e.key === 'Enter' && handleSend()}
 						placeholder="Введите сообщение..."
-						className="flex-1 px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+						className="flex-1 px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
 					/>
 					<button
 						onClick={handleSend}
-						className="bg-amber-600 text-white p-3 rounded-xl hover:bg-amber-700 transition-colors">
+						className="bg-purple-600 text-white p-3 rounded-xl hover:bg-purple-700 transition-colors">
 						<Send className="w-5 h-5" />
 					</button>
 				</div>

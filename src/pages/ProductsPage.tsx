@@ -103,7 +103,7 @@ export default function ProductsPage() {
 
 	return (
 		<div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
-			<header className="bg-white border-b border-slate-200 shadow-sm sticky top-0 z-10">
+			<header className="bg-purple-100 border-b border-slate-200 shadow-sm sticky top-0 z-10">
 				<div className="max-w-7xl mx-auto px-4 py-4">
 					<div className="flex items-center gap-4 mb-4">
 						<button
@@ -112,7 +112,7 @@ export default function ProductsPage() {
 							<ArrowLeft className="w-6 h-6 text-slate-600" />
 						</button>
 						<h1 className="text-2xl font-bold text-slate-800 flex items-center gap-2">
-							<Gem className="w-8 h-8 text-amber-600" />
+							<Gem className="w-8 h-8 text-purple-600" />
 							Каталог украшений
 						</h1>
 					</div>
@@ -126,16 +126,15 @@ export default function ProductsPage() {
 								value={searchQuery}
 								onChange={(e) => handleSearch(e.target.value)}
 								placeholder="Поиск по названию или описанию..."
-								className="w-full pl-12 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+								className="w-full pl-12 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
 							/>
 						</div>
 						<button
 							onClick={() => setShowFilters(!showFilters)}
-							className={`px-4 py-3 rounded-xl transition-all ${
-								showFilters
-									? 'bg-amber-600 text-white'
-									: 'bg-slate-100 text-slate-600 hover:bg-slate-200'
-							}`}>
+							className={`px-4 py-3 rounded-xl transition-all ${showFilters
+								? 'bg-purple-600 text-white'
+								: 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+								}`}>
 							<SlidersHorizontal className="w-5 h-5" />
 						</button>
 					</div>
@@ -147,7 +146,7 @@ export default function ProductsPage() {
 					{/* Filters sidebar */}
 					{showFilters && (
 						<aside className="w-72 flex-shrink-0">
-							<div className="bg-white rounded-xl shadow-md p-6 sticky top-32">
+							<div className="bg-purple-100 rounded-xl shadow-md p-6 sticky top-32">
 								<h2 className="text-lg font-semibold text-slate-800 mb-4">Фильтры</h2>
 
 								{/* Category filter */}
@@ -156,22 +155,20 @@ export default function ProductsPage() {
 									<div className="space-y-2">
 										<button
 											onClick={() => handleCategoryChange('all')}
-											className={`w-full text-left px-3 py-2 rounded-lg transition-colors ${
-												selectedCategory === 'all'
-													? 'bg-amber-100 text-amber-700 font-medium'
-													: 'hover:bg-slate-50 text-slate-600'
-											}`}>
+											className={`w-full text-left px-3 py-2 rounded-lg transition-colors ${selectedCategory === 'all'
+												? 'bg-purple-100 text-purple-700 font-medium'
+												: 'hover:bg-slate-50 text-slate-600'
+												}`}>
 											Все категории
 										</button>
 										{Object.entries(categoryNames).map(([key, name]) => (
 											<button
 												key={key}
 												onClick={() => handleCategoryChange(key as ProductCategory)}
-												className={`w-full text-left px-3 py-2 rounded-lg transition-colors ${
-													selectedCategory === key
-														? 'bg-amber-100 text-amber-700 font-medium'
-														: 'hover:bg-slate-50 text-slate-600'
-												}`}>
+												className={`w-full text-left px-3 py-2 rounded-lg transition-colors ${selectedCategory === key
+													? 'bg-purple-100 text-purple-700 font-medium'
+													: 'hover:bg-slate-50 text-slate-600'
+													}`}>
 												<span className="mr-2">
 													{categoryEmojis[key as ProductCategory]}
 												</span>
@@ -187,22 +184,20 @@ export default function ProductsPage() {
 									<div className="space-y-2">
 										<button
 											onClick={() => handleMetalChange('all')}
-											className={`w-full text-left px-3 py-2 rounded-lg transition-colors ${
-												selectedMetal === 'all'
-													? 'bg-amber-100 text-amber-700 font-medium'
-													: 'hover:bg-slate-50 text-slate-600'
-											}`}>
+											className={`w-full text-left px-3 py-2 rounded-lg transition-colors ${selectedMetal === 'all'
+												? 'bg-purple-100 text-purple-700 font-medium'
+												: 'hover:bg-slate-50 text-slate-600'
+												}`}>
 											Все металлы
 										</button>
 										{Object.entries(metalNames).map(([key, name]) => (
 											<button
 												key={key}
 												onClick={() => handleMetalChange(key as MetalType)}
-												className={`w-full text-left px-3 py-2 rounded-lg transition-colors ${
-													selectedMetal === key
-														? 'bg-amber-100 text-amber-700 font-medium'
-														: 'hover:bg-slate-50 text-slate-600'
-												}`}>
+												className={`w-full text-left px-3 py-2 rounded-lg transition-colors ${selectedMetal === key
+													? 'bg-purple-100 text-purple-700 font-medium'
+													: 'hover:bg-slate-50 text-slate-600'
+													}`}>
 												{name}
 											</button>
 										))}
@@ -215,22 +210,20 @@ export default function ProductsPage() {
 									<div className="space-y-2">
 										<button
 											onClick={() => handleColorChange('all')}
-											className={`w-full text-left px-3 py-2 rounded-lg transition-colors ${
-												selectedColor === 'all'
-													? 'bg-amber-100 text-amber-700 font-medium'
-													: 'hover:bg-slate-50 text-slate-600'
-											}`}>
+											className={`w-full text-left px-3 py-2 rounded-lg transition-colors ${selectedColor === 'all'
+												? 'bg-purple-100 text-purple-700 font-medium'
+												: 'hover:bg-slate-50 text-slate-600'
+												}`}>
 											Все цвета
 										</button>
 										{Object.entries(colorNames).map(([key, name]) => (
 											<button
 												key={key}
 												onClick={() => handleColorChange(key as MetalColor)}
-												className={`w-full text-left px-3 py-2 rounded-lg transition-colors ${
-													selectedColor === key
-														? 'bg-amber-100 text-amber-700 font-medium'
-														: 'hover:bg-slate-50 text-slate-600'
-												}`}>
+												className={`w-full text-left px-3 py-2 rounded-lg transition-colors ${selectedColor === key
+													? 'bg-purple-100 text-purple-700 font-medium'
+													: 'hover:bg-slate-50 text-slate-600'
+													}`}>
 												{name}
 											</button>
 										))}
@@ -243,7 +236,7 @@ export default function ProductsPage() {
 					{/* Products grid */}
 					<div className="flex-1">
 						{products.length === 0 ? (
-							<div className="bg-white rounded-xl shadow-md p-12 text-center">
+							<div className="bg-purple-100 rounded-xl shadow-md p-12 text-center">
 								<Gem className="w-16 h-16 text-slate-300 mx-auto mb-4" />
 								<p className="text-lg text-slate-600">
 									Нет товаров, соответствующих выбранным фильтрам
@@ -256,7 +249,7 @@ export default function ProductsPage() {
 									{products.map((product) => (
 										<div
 											key={product.id}
-											className="bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow overflow-hidden group">
+											className="bg-purple-100 rounded-xl shadow-md hover:shadow-xl transition-shadow overflow-hidden group">
 											<div className="relative h-64 bg-gradient-to-br from-slate-100 to-slate-200 flex items-center justify-center overflow-hidden">
 												<span className="text-7xl group-hover:scale-110 transition-transform">
 													{categoryEmojis[product.category]}
@@ -285,12 +278,12 @@ export default function ProductsPage() {
 													</span>
 												</div>
 												<div className="flex items-center justify-between">
-													<span className="text-xl font-bold text-amber-600">
+													<span className="text-xl font-bold text-purple-600">
 														{formatPrice(product.price)}
 													</span>
 													<button
 														onClick={() => navigate(`/chat`)}
-														className="px-4 py-2 bg-amber-600 text-white rounded-lg hover:bg-amber-700 transition-colors text-sm font-medium">
+														className="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors text-sm font-medium">
 														Консультация
 													</button>
 												</div>

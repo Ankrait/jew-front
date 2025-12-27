@@ -1,32 +1,22 @@
 import axios, { AxiosInstance, AxiosError, AxiosResponse } from 'axios';
 
+const API_URL = import.meta.env.VITE_API_URL ?? '';
+
 export interface ConversationMessage {
 	role: 'user' | 'assistant';
 	content: string;
+	agent?: string;
 }
 
-interface GirlfriendChatRequest {
+interface ChatRequest {
 	message: string;
 	conversation_history?: ConversationMessage[];
-	zodiac_sign?: string;
 }
 
-interface GirlfriendChatResponse {
+export interface ChatResponse {
 	status: 'success' | 'error';
-	agent: string;
+	task_type?: string;
 	response?: string;
-	zodiac_sign?: string;
-	error?: string;
-}
-
-export interface AnalysisReportResponse {
-	status: 'success' | 'error';
-	agent: string;
-	report?: Record<string, unknown>;
-	popular_styles?: string[];
-	budget_distribution?: Record<string, number>;
-	demand_forecast?: Record<string, unknown>;
-	insights?: string[];
 	error?: string;
 }
 
@@ -42,7 +32,7 @@ const createAxiosInstance = (baseURL: string): AxiosInstance => {
 export class BaseService {
 	private client: AxiosInstance;
 
-	constructor(baseURL: string = process.env.API_URL ?? '') {
+	constructor(baseURL: string = API_URL ?? '') {
 		this.client = createAxiosInstance(baseURL);
 
 		this.client.interceptors.response.use(
@@ -59,11 +49,11 @@ export class BaseService {
 
 	private async send(
 		userId: string,
-		request: GirlfriendChatRequest
-	): Promise<GirlfriendChatResponse> {
+		request: ChatRequest
+	): Promise<ChatResponse> {
 		try {
-			const response = await this.client.post<GirlfriendChatResponse>(
-				`/girlfriend/${userId}`,
+			const response = await this.client.post<ChatResponse>(
+				`/orchestrator/${userId}`,
 				request
 			);
 			return response.data;
@@ -76,29 +66,17 @@ export class BaseService {
 		userId: string,
 		message: string,
 		conversationHistory: ConversationMessage[] = [],
-		zodiacSign?: string
-	): Promise<GirlfriendChatResponse> {
+	): Promise<ChatResponse> {
 		return this.send(userId, {
 			message,
 			conversation_history: conversationHistory,
-			zodiac_sign: zodiacSign,
 		});
 	}
 
-	async getAnalysisReport(): Promise<AnalysisReportResponse> {
-		try {
-			const response = await this.client.post<AnalysisReportResponse>(
-				`/analysis/customer`
-			);
-			return response.data;
-		} catch (error) {
-			throw this.handleError(error);
-		}
-	}
 
 	private handleError(error: unknown): Error {
 		if (axios.isAxiosError(error)) {
-			const axiosError = error as AxiosError<GirlfriendChatResponse>;
+			const axiosError = error as AxiosError<ChatResponse>;
 
 			if (axiosError.response?.data?.error) {
 				return new Error(axiosError.response.data.error);
